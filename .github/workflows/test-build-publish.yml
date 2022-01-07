@@ -14,7 +14,7 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build the tagged Docker image
-        run: docker build -t ghcr.io/tim-hat-die-hand-an-der-maus/telegram-bot:${GITHUB_SHA} .
+        run: docker build -t ghcr.io/tim-hat-die-hand-an-der-maus/rotating-docx-file-handler:${GITHUB_SHA} .
 
   build_dist:
     runs-on: ubuntu-latest
