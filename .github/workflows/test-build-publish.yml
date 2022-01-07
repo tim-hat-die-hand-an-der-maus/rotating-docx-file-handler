@@ -3,18 +3,6 @@ name: Build and deploy
 on: push
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: sed -i -e "s#__TAG__#${GITHUB_SHA}#g" values.yaml
-      - uses: WyriHaximus/github-action-helm3@v2
-        with:
-          exec: helm lint
-      - uses: WyriHaximus/github-action-helm3@v2
-        with:
-          exec: helm lint --strict
-
   build_docker:
     runs-on: ubuntu-latest
     steps:
