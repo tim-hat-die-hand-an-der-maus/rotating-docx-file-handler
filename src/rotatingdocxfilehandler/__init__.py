@@ -47,3 +47,6 @@ class ClosableDocument(NamedDocument):
 class HandlerDocument(FlushableDocument, ClosableDocument):
     def write(self, msg: str):
         self.add_paragraph(msg)
+
+    def strip(self):
+        return self
