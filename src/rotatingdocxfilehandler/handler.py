@@ -22,3 +22,5 @@ class RotatingDocxFileHandler(RotatingFileHandler):
 
     def close(self):
         super().close()
+
+        self.document.save(self.baseFilename)
