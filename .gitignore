@@ -132,3 +132,7 @@ dmypy.json
 .idea
 *.iml
 
+# application specific
+*.docx
+*/*.docx
+
