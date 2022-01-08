@@ -25,5 +25,12 @@ class RotatingDocxFileHandlerTest(unittest.TestCase):
         if os.path.exists(filename):
             os.remove(filename)
 
-        createLoggerWithDocxHandler(filename, level=logging.DEBUG)
+        logger = createLoggerWithDocxHandler(filename, level=logging.DEBUG)
+        logger.error("error")
+        logger.warning("warning")
+        logger.info("info")
+        logger.debug("debug")
+
+        # TODO: actually read contents from file
+        # change formatter for this to `%(message)s`
         self.assertEqual(True, True)
