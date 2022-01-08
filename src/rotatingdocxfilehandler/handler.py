@@ -1,6 +1,9 @@
 from logging.handlers import RotatingFileHandler
+from typing import Optional
 
 import docx
+
+from . import HandlerDocument
 
 
 class RotatingDocxFileHandler(RotatingFileHandler):
@@ -10,17 +13,16 @@ class RotatingDocxFileHandler(RotatingFileHandler):
 
         super().__init__(filename, mode=mode, maxBytes=maxBytes, backupCount=backupCount, encoding=encoding,
                          delay=delay)
+        self.stream: Optional[HandlerDocument] = None
 
     def _open(self):
-        # noinspection PyUnresolvedReferences
-        try:
-            self.document = docx.Document(self.baseFilename)
-        except docx.opc.exceptions.PackageNotFoundError:
-            self.document = docx.Document()
+        self.stream = HandlerDocument(self.baseFilename)
 
-        self.document.save(self.baseFilename)
+        self.stream.save(self.baseFilename)
+
+        return self.stream
 
     def close(self):
         super().close()
 
-        self.document.save(self.baseFilename)
+        self.stream.save(self.baseFilename)

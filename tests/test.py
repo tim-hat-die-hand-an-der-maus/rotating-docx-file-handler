@@ -2,12 +2,12 @@ import logging
 import os
 import unittest
 
-from src import rotatingdocxfilehandler
+from src.rotatingdocxfilehandler import handler
 
 
 def createLoggerWithDocxHandler(name: str, *, level: int = logging.DEBUG):
     logger = logging.Logger(name)
-    ch = rotatingdocxfilehandler.RotatingDocxFileHandler("test")
+    ch = handler.RotatingDocxFileHandler("test")
 
     formatting = "[{}] %(asctime)s\t%(levelname)s\t%(module)s.%(funcName)s#%(lineno)d | %(message)s".format(name)
     formatter = logging.Formatter(formatting)
