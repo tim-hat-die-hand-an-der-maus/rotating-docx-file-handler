@@ -1,2 +1,2 @@
 python-docx==0.8.11
-markdown==3.4.2
+markdown==3.4.4
